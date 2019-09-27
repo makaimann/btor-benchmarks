@@ -1,0 +1,14 @@
+This is a collection of buggy FIFO-based systems. These were originally written in Verilog and converted to BTOR2/AIGER using Yosys.
+
+The systems are:
+1. a circular pointer FIFO that assumes power of two depth but actually gets the provided power-of-two depth plus one
+2. a shift register FIFO that is missing the last register
+3. between 2 and 5 arbitrated fifos with an abstract arbiter and a credit counter.
+  - the credit counter is supposed to ensure that you never push to a full fifo, but it starts with onen too many credits
+
+All the bugs are deep relative to the depth parameter.
+
+The naming scheme is:
+<type of system>_n<number of fifos>_w<data width>_d<depth>.<ext>
+
+The single fifos do not have the number of fifo component of the name
